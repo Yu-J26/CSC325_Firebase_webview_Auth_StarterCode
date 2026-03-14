@@ -25,6 +25,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.stage.Stage;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.fxml.FXMLLoader;
+import java.io.IOException;
+
 public class AccessFBView {
 
 
@@ -157,4 +165,37 @@ public class AccessFBView {
         }
 
     }
+
+    @FXML
+    private void showLogin() throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/files/Login.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void showRegister() throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/files/Register.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void handleExit() {
+        Platform.exit();
+    }
+
+    @FXML
+    private void handleAbout() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About");
+        alert.setHeaderText("My Application");
+        alert.setContentText("This is a Firebase demo app.");
+        alert.showAndWait();
+    }
+
 }
