@@ -4,17 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4ae5f67-a013-4cbc-a589-49fa29fa9b6b" name="Changes" comment="ID and updated menu">
+    <list default="true" id="e4ae5f67-a013-4cbc-a589-49fa29fa9b6b" name="Changes" comment="Upload picture">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/csc325_firebase_webview_auth/model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/csc325_firebase_webview_auth/model/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/csc325_firebase_webview_auth/view/AccessFBView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/csc325_firebase_webview_auth/view/AccessFBView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/csc325_firebase_webview_auth/viewmodel/AccessDataViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/csc325_firebase_webview_auth/viewmodel/AccessDataViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/files/AccessFBView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/files/AccessFBView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/files/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/files/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/files/Register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/files/Register.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/csc325_firebase_webview_auth/view/WebContainerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/csc325_firebase_webview_auth/view/WebContainerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/csc325_firebase_webview_auth/model/FirestoreContext.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/csc325_firebase_webview_auth/model/Person.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/csc325_firebase_webview_auth/view/AccessFBView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/csc325_firebase_webview_auth/view/WebContainerController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/csc325_firebase_webview_auth/view/WebContainerController$Bridge.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/csc325_firebase_webview_auth/view/WebContainerController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/csc325_firebase_webview_auth/viewmodel/AccessDataViewModel.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/files/AccessFBView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/files/AccessFBView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +28,7 @@
       <list>
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -228,7 +231,23 @@
       <option name="project" value="LOCAL" />
       <updated>1773455092496</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Tableview">
+      <option name="closed" value="true" />
+      <created>1773457686026</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1773457686026</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Upload picture">
+      <option name="closed" value="true" />
+      <created>1773458248395</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1773458248395</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,6 +265,8 @@
     <MESSAGE value="Login and Register" />
     <MESSAGE value="CSS" />
     <MESSAGE value="ID and updated menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="ID and updated menu" />
+    <MESSAGE value="Tableview" />
+    <MESSAGE value="Upload picture" />
+    <option name="LAST_COMMIT_MESSAGE" value="Upload picture" />
   </component>
 </project>

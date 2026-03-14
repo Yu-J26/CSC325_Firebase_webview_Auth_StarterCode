@@ -47,7 +47,7 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="129.0" layoutX="17.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="profileImageView" fitHeight="150.0" fitWidth="129.0" layoutX="17.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <effect>
                         <InnerShadow>
                            <color>
@@ -59,6 +59,7 @@
                         <Image url="@profile_empty.png" />
                      </image>
                   </ImageView>
+                   <Button layoutX="17.0" layoutY="170.0" text="Upload Picture" onAction="#handleUploadPicture"/>
                </children>
             </AnchorPane>
             <VBox prefHeight="535.0" prefWidth="551.0">

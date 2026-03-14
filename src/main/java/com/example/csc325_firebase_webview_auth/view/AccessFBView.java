@@ -43,6 +43,7 @@ import java.io.File;
 import java.nio.file.Files;
 import javafx.stage.FileChooser;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class AccessFBView {
 

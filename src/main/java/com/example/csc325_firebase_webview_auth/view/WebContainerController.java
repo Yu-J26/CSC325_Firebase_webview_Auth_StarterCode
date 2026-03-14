@@ -29,56 +29,14 @@ import java.util.logging.Logger;
  * FXML Controller class
  *
  * @author MoaathAlrajab
- *
- *
- *
- *
  */
 public class WebContainerController implements Initializable {
     Document doc;
-        private DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    private DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
-            private static String HTML_STRING2 = //
-            "<html>"//
-                    + "<head> " //
-                   + "  <script language='javascript'> " //
-                   + "     function changeBgColor()  { "//
-                   + "       var color= document.getElementById('ueberschr').value; "//
-                   + "       document.body.style.backgroundColor= color; " //
-                   + "     } " //
-                   + "  </script> "//
-                    + "  </script> "//
-                    + "</head> "//
-                    + "<body> "//
-                    + "   <h2>This is Html content</h2> <input id='ueberschr' value='yellow' />"//
-                    + "   <button onclick='app12.showTime();changeBgColor();'>Call To JavaFX</button> "//
-                    + "</body> "//
-                    + "</html> "//
-    ;
- private static String HTML_STRING = //
-           "<html>"//
-                   + "<head> " //
-                   + "  <script language='javascript'> " //
-                   + "     function changeBgColor()  { "//
-                   + "       var color= document.getElementById('color').value; "//
-                   + "       document.body.style.backgroundColor= color; " //
-                   + "     } " //
-                   + "  </script> "//
-                   + "</head> "//
-                   + "<body> "//
-                   + "   <h2>This is Html content</h2> "//
-                   + "   <b>Enter Color:</b> "//
-                   + "   <input id='color' value='yellow' /> "//
-                   + "   <button onclick='changeBgColor();'>Change Bg Color</button> "//
-                   + "</body> "//
-                   + "</html> "//
-   ;
- 
     @FXML
     Label label;
-    
-    
-    
+
     @FXML
     WebView webView;
     private WebEngine webEngine;
@@ -87,13 +45,13 @@ public class WebContainerController implements Initializable {
     private void goAction(ActionEvent evt) {
         webEngine.load("http://google.com");
     }
+
     @FXML
     private void setLabel(ActionEvent e){
-                            System.out.println("H1");
-
+        System.out.println("H1");
         doc.getElementById("ueberschr").setAttribute("value", "Red");
     }
-    
+
     @FXML
     private void swithcBackStage(ActionEvent e){
         try {
@@ -105,48 +63,45 @@ public class WebContainerController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         try {
             webEngine = webView.getEngine();
-                      //  webView.setContextMenuEnabled(false);
-            webEngine.loadContent(HTML_STRING2);
+            // Load the HTML file (ensure it's in src/main/resources/files/)
+            webEngine.load(getClass().getResource("/files/newhtml.html").toExternalForm());
 
             webEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
                 @Override
                 public void changed(ObservableValue<? extends State> ov, State t, State newState) {
-                     if (newState == State.SUCCEEDED) {
-                         doc = webEngine.getDocument();
-                    // Get window object of page.
-                    JSObject jsobj = (JSObject) webEngine.executeScript("window");
-                                        System.out.println("H2");
-
-
-                    // Set member for 'window' object.
-                    // In Javascript access: window.myJavaMember....
-                    jsobj.setMember("app12", new Bridge());
-                }
+                    if (newState == State.SUCCEEDED) {
+                        doc = webEngine.getDocument();
+                        JSObject jsobj = (JSObject) webEngine.executeScript("window");
+                        jsobj.setMember("app12", new Bridge());
+                        jsobj.setMember("enigma", new EnigmaBridge()); // ADD THIS LINE
+                    }
                 }
             });
             webView.setContextMenuEnabled(false);
-            //txtURL.setText("http://www.google.com");
-            // webEngine.load("http://www.google.com");
             webEngine.setJavaScriptEnabled(true);
-            //webEngine.load(
-                    // this.getClass().getResource("newhtml.html").toExternalForm()
-            //        "file://Users/MoaathAlrajab/Documents/demo265/MVVMExample/src/main/resources/com/mycompany/mvvmexample/newhtml.html"
-            //);
         } catch (Exception ex) {
             Logger.getLogger(WebContainerController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-        public class Bridge {
 
+    public class Bridge {
         public void showTime() {
             System.out.println("Show Time");
-
             label.setText("Now is: " + df.format(new Date()));
         }
     }
-}
 
+    // Add this inner class
+    public class EnigmaBridge {
+        public void checkSolution(String input) {
+            System.out.println("Checking solution: " + input);
+            if ("example".equals(input)) {
+                webEngine.executeScript("document.getElementById('out').className = 'enabled';");
+            } else {
+                webEngine.executeScript("document.getElementById('out').className = '';");
+            }
+        }
+    }
+}
