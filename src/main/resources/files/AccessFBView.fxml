@@ -38,6 +38,14 @@
                        <MenuItem mnemonicParsing="false" text="About" onAction="#handleAbout"/>
                    </items>
                </Menu>
+               <Menu mnemonicParsing="false" text="Edit">
+                   <items>
+                       <MenuItem mnemonicParsing="false" text="Add" onAction="#addRecord"/>
+                       <MenuItem mnemonicParsing="false" text="Delete" onAction="#handleDelete"/>
+                       <MenuItem mnemonicParsing="false" text="Update" onAction="#handleUpdate"/>
+                       <MenuItem mnemonicParsing="false" text="Refresh" onAction="#readRecord"/>
+                   </items>
+               </Menu>
            </menus>
        </MenuBar>
       <HBox layoutX="6.0" layoutY="28.0" prefHeight="535.0" prefWidth="880.0">

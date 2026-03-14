@@ -31,6 +31,10 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import java.io.IOException;
 
 public class AccessFBView {
@@ -196,6 +200,28 @@ public class AccessFBView {
         alert.setHeaderText("My Application");
         alert.setContentText("This is a Firebase demo app.");
         alert.showAndWait();
+    }
+
+    @FXML
+    private void handleDelete() {
+        Person selected = personTable.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            App.fstore.collection("References").document(selected.getId()).delete();
+            listOfUsers.remove(selected);
+        }
+    }
+
+    @FXML
+    private void handleUpdate() {
+        Person selected = personTable.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            Map<String, Object> updates = new HashMap<>();
+            updates.put("Name", nameField.getText());
+            updates.put("Major", majorField.getText());
+            updates.put("Age", Integer.parseInt(ageField.getText()));
+            App.fstore.collection("References").document(selected.getId()).update(updates);
+            readFirebase(); // refresh table
+        }
     }
 
 }
