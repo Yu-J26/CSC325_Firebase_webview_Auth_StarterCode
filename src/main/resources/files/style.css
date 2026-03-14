@@ -1,0 +1,28 @@
+.root {
+    -fx-font-family: "Arial";
+    -fx-background-color: #f4f4f4;
+}
+.button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8 16;
+}
+.button:hover {
+    -fx-background-color: #45a049;
+}
+.text-field, .password-field {
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+}
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+}
+.table-column {
+    -fx-alignment: CENTER;
+}
+.menu-bar {
+    -fx-background-color: #e0e0e0;
+}
