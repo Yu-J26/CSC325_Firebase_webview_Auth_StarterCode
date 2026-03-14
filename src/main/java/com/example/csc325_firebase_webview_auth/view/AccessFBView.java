@@ -38,6 +38,11 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.util.converter.NumberStringConverter;
 
+import com.google.cloud.storage.*;
+import java.io.File;
+import java.nio.file.Files;
+import javafx.stage.FileChooser;
+import javafx.scene.image.Image;
 
 public class AccessFBView {
 
@@ -63,6 +68,8 @@ public class AccessFBView {
     private TableColumn<Person, String> majorColumn;
     @FXML
     private TableColumn<Person, Integer> ageColumn;
+
+    @FXML private ImageView profileImageView;
 
     private ObservableList<Person> listOfUsers = FXCollections.observableArrayList();
     private Person person;
@@ -218,6 +225,42 @@ public class AccessFBView {
             updates.put("Age", Integer.parseInt(ageField.getText()));
             App.fstore.collection("References").document(selected.getId()).update(updates);
             readFirebase(); // refresh table
+        }
+    }
+    @FXML
+    private void handleUploadPicture() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Profile Picture");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
+        File file = fileChooser.showOpenDialog(profileImageView.getScene().getWindow());
+        if (file != null) {
+            uploadToStorage(file);
+        }
+    }
+
+    private void uploadToStorage(File file) {
+        // Replace with actual user ID after login (you can store it in a static variable)
+        String userId = "current_user_id"; // TODO: replace with real user ID from login
+
+        try {
+            // Your Firebase Storage bucket name (from Firebase Console)
+            String bucketName = "csc325yu.appspot.com";
+            Storage storage = StorageOptions.getDefaultInstance().getService();
+            String blobName = "profile_pictures/" + userId + ".jpg";
+            BlobId blobId = BlobId.of(bucketName, blobName);
+            BlobInfo blobInfo = BlobInfo.newBuilder(blobId).build();
+            byte[] content = Files.readAllBytes(file.toPath());
+            storage.create(blobInfo, content);
+            String fileUrl = "https://storage.googleapis.com/" + bucketName + "/" + blobName;
+
+            // Update Firestore user document (adjust collection/document as needed)
+            App.fstore.collection("Users").document(userId).update("profilePicUrl", fileUrl);
+
+            // Display the uploaded image
+            Image image = new Image(fileUrl);
+            profileImageView.setImage(image);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
