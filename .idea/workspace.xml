@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4ae5f67-a013-4cbc-a589-49fa29fa9b6b" name="Changes" comment="Login and Register">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/files/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="e4ae5f67-a013-4cbc-a589-49fa29fa9b6b" name="Changes" comment="ID and updated menu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/csc325_firebase_webview_auth/view/AccessFBView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/csc325_firebase_webview_auth/view/AccessFBView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/csc325_firebase_webview_auth/view/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/csc325_firebase_webview_auth/model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/csc325_firebase_webview_auth/model/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/csc325_firebase_webview_auth/view/AccessFBView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/csc325_firebase_webview_auth/view/AccessFBView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/csc325_firebase_webview_auth/viewmodel/AccessDataViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/csc325_firebase_webview_auth/viewmodel/AccessDataViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/files/AccessFBView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/files/AccessFBView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/files/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/files/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/files/Register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/files/Register.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/csc325_firebase_webview_auth/model/Person.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/csc325_firebase_webview_auth/view/AccessFBView.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/files/AccessFBView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/files/AccessFBView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,9 +77,11 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/example/csc325_firebase_webview_auth/viewmodel" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Mutts\IdeaProjects\CSC325\CSC325_Firebase_webview_Auth_StarterCode\src\main\java\com\example\csc325_firebase_webview_auth\model" />
+      <recent name="C:\Users\Mutts\IdeaProjects\CSC325\CSC325_Firebase_webview_Auth_StarterCode\src\main\java\com\example\csc325_firebase_webview_auth\viewmodel" />
+      <recent name="C:\Users\Mutts\IdeaProjects\CSC325\CSC325_Firebase_webview_Auth_StarterCode\src\main\java\com\example\csc325_firebase_webview_auth\view" />
       <recent name="C:\Users\Mutts\IdeaProjects\CSC325\CSC325_Firebase_webview_Auth_StarterCode\src\main\resources\files" />
       <recent name="$PROJECT_DIR$/src/main/resources/files" />
-      <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.csc325_firebase_webview_auth.viewmodel" />
@@ -118,7 +124,7 @@
       <module name="CSC325_Firebase_webview_Auth" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.csc325_firebase_webview_auth.model.*" />
+          <option name="PATTERN" value="com.example.csc325_firebase_webview_auth.view.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -131,7 +137,7 @@
       <module name="CSC325_Firebase_webview_Auth" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.csc325_firebase_webview_auth.model.*" />
+          <option name="PATTERN" value="com.example.csc325_firebase_webview_auth.view.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -206,7 +212,23 @@
       <option name="project" value="LOCAL" />
       <updated>1773452733972</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="CSS">
+      <option name="closed" value="true" />
+      <created>1773453444297</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1773453444297</updated>
+    </task>
+    <task id="LOCAL-00008" summary="ID and updated menu">
+      <option name="closed" value="true" />
+      <created>1773455092496</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1773455092496</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,6 +244,8 @@
     <MESSAGE value="Assignment Start" />
     <MESSAGE value="Splash Screen" />
     <MESSAGE value="Login and Register" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login and Register" />
+    <MESSAGE value="CSS" />
+    <MESSAGE value="ID and updated menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="ID and updated menu" />
   </component>
 </project>

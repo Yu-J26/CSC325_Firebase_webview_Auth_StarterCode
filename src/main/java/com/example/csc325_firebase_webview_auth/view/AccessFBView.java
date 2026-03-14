@@ -31,16 +31,18 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
 
-import java.util.HashMap;
-import java.util.Map;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.util.converter.NumberStringConverter;
 
-import java.io.IOException;
 
 public class AccessFBView {
 
 
-     @FXML
+    @FXML
     private TextField nameField;
     @FXML
     private TextField majorField;
@@ -52,18 +54,33 @@ public class AccessFBView {
     private Button readButton;
     @FXML
     private TextArea outputField;
-     private boolean key;
+
+    @FXML
+    private TableView<Person> personTable;
+    @FXML
+    private TableColumn<Person, String> nameColumn;
+    @FXML
+    private TableColumn<Person, String> majorColumn;
+    @FXML
+    private TableColumn<Person, Integer> ageColumn;
+
     private ObservableList<Person> listOfUsers = FXCollections.observableArrayList();
     private Person person;
+
     public ObservableList<Person> getListOfUsers() {
         return listOfUsers;
     }
 
     void initialize() {
+        nameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
+        majorColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMajor()));
+        ageColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getAge()).asObject());
+        personTable.setItems(listOfUsers);
 
         AccessDataViewModel accessDataViewModel = new AccessDataViewModel();
         nameField.textProperty().bindBidirectional(accessDataViewModel.userNameProperty());
         majorField.textProperty().bindBidirectional(accessDataViewModel.userMajorProperty());
+        ageField.textProperty().bindBidirectional(accessDataViewModel.ageProperty(), new NumberStringConverter());
         writeButton.disableProperty().bind(accessDataViewModel.isWritePossibleProperty().not());
     }
 
@@ -72,17 +89,17 @@ public class AccessFBView {
         addData();
     }
 
-        @FXML
+    @FXML
     private void readRecord(ActionEvent event) {
         readFirebase();
     }
 
-            @FXML
+    @FXML
     private void regRecord(ActionEvent event) {
         registerUser();
     }
 
-     @FXML
+    @FXML
     private void switchToSecondary() throws IOException {
         App.setRoot("/files/WebContainer.fxml");
     }
@@ -99,47 +116,27 @@ public class AccessFBView {
         ApiFuture<WriteResult> result = docRef.set(data);
     }
 
-        public boolean readFirebase()
-         {
-             key = false;
-
-        //asynchronously retrieve all documents
-        ApiFuture<QuerySnapshot> future =  App.fstore.collection("References").get();
-        // future.get() blocks on response
-        List<QueryDocumentSnapshot> documents;
-        try
-        {
-            documents = future.get().getDocuments();
-            if(documents.size()>0)
-            {
-                System.out.println("Outing....");
-                for (QueryDocumentSnapshot document : documents)
-                {
-                    outputField.setText(outputField.getText()+ document.getData().get("Name")+ " , Major: "+
-                            document.getData().get("Major")+ " , Age: "+
-                            document.getData().get("Age")+ " \n ");
-                    System.out.println(document.getId() + " => " + document.getData().get("Name"));
-                    person  = new Person(String.valueOf(document.getData().get("Name")),
-                            document.getData().get("Major").toString(),
-                            Integer.parseInt(document.getData().get("Age").toString()));
-                    listOfUsers.add(person);
-                }
+    public boolean readFirebase() {
+        listOfUsers.clear();
+        ApiFuture<QuerySnapshot> future = App.fstore.collection("References").get();
+        try {
+            List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+            for (QueryDocumentSnapshot document : documents) {
+                String name = document.getString("Name");
+                String major = document.getString("Major");
+                Long ageLong = document.getLong("Age");
+                int age = ageLong != null ? ageLong.intValue() : 0;
+                Person person = new Person(document.getId(), name, major, age);
+                listOfUsers.add(person);
             }
-            else
-            {
-               System.out.println("No data");
-            }
-            key=true;
-
+            return true;
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+            return false;
         }
-        catch (InterruptedException | ExecutionException ex)
-        {
-             ex.printStackTrace();
-        }
-        return key;
     }
 
-        public void sendVerificationEmail() {
+    public void sendVerificationEmail() {
         try {
             UserRecord user = App.fauth.getUser("name");
             //String url = user.getPassword();
@@ -164,7 +161,7 @@ public class AccessFBView {
             return true;
 
         } catch (FirebaseAuthException ex) {
-           // Logger.getLogger(FirestoreContext.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
             return false;
         }
 
@@ -223,5 +220,4 @@ public class AccessFBView {
             readFirebase(); // refresh table
         }
     }
-
 }

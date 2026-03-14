@@ -21,7 +21,7 @@ public class Person {
     private String major;
     private int age;
 
-    public Person(String name, String major, int age) {
+    public Person(String id, String name, String major, int age) {
         this.id = id;
         this.name = name;
         this.major = major;

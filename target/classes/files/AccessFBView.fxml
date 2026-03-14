@@ -28,14 +28,17 @@
                        <MenuItem mnemonicParsing="false" text="Close" onAction="#handleExit"/>
                    </items>
                </Menu>
-               <Menu mnemonicParsing="false" text="Edit">
-                   <items>
-                       <MenuItem mnemonicParsing="false" text="Delete" onAction="#handleDelete"/>
-                   </items>
-               </Menu>
                <Menu mnemonicParsing="false" text="Help">
                    <items>
                        <MenuItem mnemonicParsing="false" text="About" onAction="#handleAbout"/>
+                   </items>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Edit">
+                   <items>
+                       <MenuItem mnemonicParsing="false" text="Add" onAction="#addRecord"/>
+                       <MenuItem mnemonicParsing="false" text="Delete" onAction="#handleDelete"/>
+                       <MenuItem mnemonicParsing="false" text="Update" onAction="#handleUpdate"/>
+                       <MenuItem mnemonicParsing="false" text="Refresh" onAction="#readRecord"/>
                    </items>
                </Menu>
            </menus>
@@ -60,13 +63,13 @@
             </AnchorPane>
             <VBox prefHeight="535.0" prefWidth="551.0">
                <children>
-                  <TextArea fx:id="outputField" prefHeight="184.0" prefWidth="514.0" />
-                  <TableView prefHeight="351.0" prefWidth="514.0">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
-                    </columns>
-                  </TableView>
+                   <TableView fx:id="personTable" prefHeight="351.0" prefWidth="514.0">
+                       <columns>
+                           <TableColumn fx:id="nameColumn" text="Name" prefWidth="150"/>
+                           <TableColumn fx:id="majorColumn" text="Major" prefWidth="150"/>
+                           <TableColumn fx:id="ageColumn" text="Age" prefWidth="100"/>
+                       </columns>
+                   </TableView>
                </children>
             </VBox>
             <VBox prefHeight="535.0" prefWidth="241.0" spacing="10.0">
